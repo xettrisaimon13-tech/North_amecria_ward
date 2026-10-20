@@ -1,12 +1,12 @@
-{
-  "name": "night-ward-server",
-  "version": "1.0.0",
-  "description": "Night Ward multiplayer relay server",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "ws": "^8.16.0"
-  }
-}
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+EXPOSE 10000
+
+CMD ["node", "server.js"]
